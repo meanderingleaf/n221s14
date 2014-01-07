@@ -1,0 +1,314 @@
+%Variables and conditionals
+
+Variables and conditionals
+--------------------------------------
+
+Travis Faas
+Media Arts and Science, IUPUI
+
+Variables
+--------------------------------------
+
+- You've all seen variables before
+
+	4 = 2x(solve for x)
+
+- Variables are things that stand in for other things
+- You can also think of variables as a way to store something (and it can be just about anything)
+
+A variable
+---------------------------------------
+
+	var myNumber = 5;
+
+- Its name is 'myNumber'
+- It has the value of 5 (I would use quotes here, but, well, we'll see)
+
+Variable types
+----------------------------------------
+
+- Three basic types of variable
+
+- String
+- Number
+- Boolean
+
+Numbers
+----------------------------------------
+
+- Store numerical data
+
+- 5
+- -10
+- 2.63
+- 0.11234
+
+Strings
+----------------------------------------
+
+- Store textual data
+
+- "Hello world"
+- "This is a string"
+- "A"
+
+Booleans
+----------------------------------------
+
+- Store true or false
+
+Variable assignment
+----------------------------------------
+
+- Let's say we make a variable:
+
+	var myVar;
+
+- This variable doesn't have anything stored in it.
+- To store in a variable, one needs to use the **=** equals sign
+- the value on the **right** is stored in the variable on the **left**
+
+	var myVar = 5;
+
+- Now the variable myVar has a value
+
+Variable assignment
+------------------------------------------
+
+- Note that variable assignment can take place *whenever*
+
+	var myVar;
+	myVar = 5;
+
+- And that the last time something is assigned to it represent the **current value**
+
+	var myVar;
+	myVar = 5;
+	myVar = 8;
+
+- In the case above, myVar is 'worth' 8 by the end of the code
+
+Commenting
+-------------------------------------------
+
+- Sometimes, you just want to write something in the code that the computer *should not try and interperet*
+- These can be called "comments"
+- They come in two forms: the block-comment, and the line-comment
+
+Line-comment
+-------------------------------------------
+
+- Line comments start with two slashes
+- Anything after the slashes is not interpereted by the computer
+
+	//this is a line comment
+
+Block-comment
+--------------------------------------------
+
+- Starts with a slash-star
+- Ends with a star-slash
+- Anything in between is not interpereted as code by the computer
+
+	/*
+		This
+		is
+		a block comment
+	*/
+
+Why use comments
+----------------------------------------------
+
+- To plan your code before writing code (psuedocode)
+- We'll be working like this the rest of the semester
+
+Using comments - a basic example
+---------------------------------------------
+
+- Let's say we need to make a program that creates a varaible worth five, then make it worth 7
+- Here would be the psuedocode
+
+	//Make a variable
+	//store 5 in the variable
+	//store 7 in the variable
+
+- Here would be the final code
+
+	//Make a variable
+	var myVariable;
+	//store 5 in the variable
+	myVariable = 5;
+	//store 7 in the variable
+	myVariable = 7;
+
+Logic
+---------------------------------------------
+
+- The building blocks of interactivity
+- Computers can do basic logical checks
+	- Greater than / greater than or equal to
+	- Less than / less than or equal to
+	- Equal to
+	- Not equal to
+
+- These checks all turn out to be **true** or **false**
+
+Less than
+---------------------------------------------
+
+	var resultOne = 5 < 7; //true
+	var resultTwo = 7 < 5; //false
+
+Greater than
+----------------------------------------------
+
+	var resultOne = 5 > 7; //false
+	var resultTwo = 7 > 5; //true
+
+Equal to
+-----------------------------------------------
+
+	var resultOne = 5 == 5; //true
+	var resultTwo = 7 == 5; //false
+
+Not equal to
+-----------------------------------------------
+
+	var resultOne = 5 != 5; //false
+	var resultTwo = 7 != 5; //true
+
+The if statement
+-----------------------------------------------
+
+- Only runs a **block of code** if something is true
+
+- A block of code is anything inside of *curly brackets* { }
+
+- An example:
+	
+	if(true) 
+	{
+		//this code runs
+	}
+
+Else
+-----------------------------------------------
+
+- The else statement only runs if the thing within the if statement is **false**
+
+	if(4<5) {
+		alert("All is right with the world.");
+	} 
+	else 
+	{
+		alert("Something has gone terribly wrong");
+	}
+
+Confirm - Getting some data in
+-----------------------------------------------
+
+- There are a few ways to get data into javascript from popup boxes
+- Confirm is a okay/cancel box
+- Is a user clicks 'ok', the computer gets a 'true'
+- If a user clicks 'cancel', the computer gets a 'false'
+
+	//Check to see if the user wants to read a book
+	var readAbook = confirm("Do you want to read a book?");
+
+Using confirms
+---------------------------------------------------
+
+- Combine with conditionals
+
+	//get user's input if they want to read a book
+	var readAbook = confirm("Do you want to read a book?");
+	
+	if(readABook == true) 
+	{
+		//if the user wants to read a book
+		alert("Good.")
+	} 
+	else 
+	{
+		//if the user does not want to read a book
+		alert("Your mind will rot!")
+	}
+
+
+
+Nesting conditionals
+----------------------------------------------------
+
+- It is entirely possible to have if statements within if statements
+	
+	//get user's input if they want to read a book
+	var readAbook = confirm("Do you want to read a book?");
+	var doHomework = confirm("Do you also want to do you homework?")
+	
+	if(readABook == true) 
+	{
+		//if the user wants to read a book
+		if(doHomework==true) 
+		{
+			//if the user wants to do their homework
+			alert("Excellent!");
+		}
+	} 
+	else 
+	{
+		//if the user does not want to read a book
+		alert("Your mind will rot!")
+	}
+
+
+Quick question
+--------------------------------------------------------
+
+- With the code above, is there a chance the usere will _not_ see a final alert?
+
+Logical operators
+--------------------------------------------------------
+
+- The previous example can be simplified down a bit using **logical operators**
+- **&&** ('AND')
+- **||** ('OR')
+
+How the logical operators work
+--------------------------------------------------------
+
+- looks for a true/false one either side
+- Turns into a single true/false
+
+true 	|| false 	: true
+true 	|| true 	: true
+false	|| false 	: false
+
+true 	&& true		: true
+true 	&& false	: false
+false	&& false	: false
+
+Simplifying our previous if/else statement
+--------------------------------------------------------
+
+	//get user's input if they want to read a book
+	var readAbook = confirm("Do you want to read a book?");
+	var doHomework = confirm("Do you also want to do you homework?")
+	
+	if(readABook == true && doHomework == true) 
+	{
+		//if the user wants to read a book AND do their homework
+		alert("Excellent!");
+	} 
+	else 
+	{
+		//if the user does not want to read a book
+		alert("Your mind will rot!")
+	}
+
+A brief note about fomatting
+---------------------------------------------------------
+
+- Note that every time a { appears, the next line is tabbed in
+- And once that block exits with a }, the following lines are not longer tabbed in
+- Get in the habit of doing this
+	- Yes, it will be worth points

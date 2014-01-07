@@ -1,0 +1,170 @@
+Some HTML and a bit of Javascript
+------------------------
+
+Media Arts and Science, IUPUI
+
+
+Here we go
+-----------------------
+
+- Open up dream weaver
+- Create a new HTML document
+	- Select 'html 5' as the doctype
+
+A quick review of markup
+------------------------
+
+Inside the body tag
+------------------------
+
+- Add a div, and a parapraph within the div that says 'hello world'
+
+	<div>
+		<p>Hello World</p>
+	</div>
+
+Beneath the previous div
+------------------------
+
+- Add a second div with an unordered list of your faaaavorite colors
+
+	<div>
+		<ul>
+			<li>Red</li>
+			<li>Green</li>
+			<li>Urple</li>
+		</ul>
+	</div>
+
+Adding class
+------------------------
+
+- Change the previous code so all three of the li's have their own, unique class
+
+	<div>
+		<ul>
+			<li class='red'>Red</li>
+			<li class='green'>Green</li>
+			<li class='urple'>Urple</li>
+		</ul>
+	</div>
+
+Styling Text color
+------------------------
+
+- In the head tag, add a style tag
+- Style each class to be the color it states itself to be
+
+
+	<style>
+		.red { color: #FF0000; }
+		.green { color: #00FF00; }
+		.urple { color: #66138c; }
+	</style>
+
+Some other styles
+-----------------------
+
+- Go back and add a class of "note" to each div
+- Each should have an id of 'note1' or 'note2'
+
+	<div class='note' id="note1">
+		<p>Hello World</p>
+	</div>
+	<div class='note' id="note2">
+		<ul>
+			<li class='red'>Red</li>
+			<li class='green'>Green</li>
+			<li class='urple'>Urple</li>
+		</ul>
+	</div>
+
+Styling the note class
+-----------------------
+
+- Give the notes a width and height of 200 pixels
+- Adjust their padding to 20px;
+- A background color of light grey
+
+	.note {
+		width: 200px;
+		height: 200px;
+		background: #EEE;
+		padding: 20px;
+	}
+
+Styling the note IDs
+-----------------------
+
+- position both absolutely
+- Put the first at 50,50
+- Put the second at 250,250
+
+	#note1 {
+		position: absolute;
+		top: 50px;
+		left: 50px;
+	}
+
+	#note2 {
+		position: absolute;
+		top: 250px;
+		left: 250px;
+	}
+
+
+ON TO JAVASCRIPT
+-----------------------
+
+- Well, you don't know everything about HTML and CSS, but who does?
+
+
+In the head tag
+------------------------
+
+- Add a 'script' tag
+- This is where **all javascript code will go**
+
+	<head>
+		<script>
+		</script>
+	</head>
+
+Inside the script tag
+-------------------------
+
+- Lets add a javascript popup
+
+	alert("Hello world!");
+
+- Save your file, and go refresh the page.
+- Enjoy the aggravation
+
+Developer Tools (Chrome)
+--------------------------
+
+- Make sure your page is opened in Google Chrome
+- Click on the icon in the top right (looks like three lines)
+- Go to **tools->Javascript console** (take note of the hotkey for this as well)
+- Keep this console open for the next section
+
+Console.log
+-------------------------
+
+- A way of outputing data without interrupting the user
+- Requires a javascript console - like the one we just opened
+- Change the one line of javascript we have in the script tag to this:
+
+	console.log("Hello world");
+
+- Save your file, and go refresh the page
+- You should see "Hello world" in the javascript console
+
+Developer tool - Elements tag
+--------------------------
+
+- Click on the 'elements' tab in the developer tools section
+- This is a live version of what's on the page
+	- Handy for when writing code that puts new HTML on the page
+- Hovering over a tag will highlight what space it takes up on  the page
+- Clicking on a tag will show all the styles applied to it

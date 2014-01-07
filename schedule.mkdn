@@ -1,0 +1,292 @@
+
+1
+------------------
+
+**Introduction to course**
+	- JS background
+Basic HTML and CSS
+
+Tools:
+	Dreamweaver
+	Chrome
+
+Class:
+	Alerts
+	Basic CSS & layout tricks
+	Review of HTML tags
+	console.log
+	The developer tools
+
+Assignment: Create a simple page
+	CSS
+	Using DIVs 
+	Using JAVASCRIPT to show a pop up (alert)
+
+	Entry Survey
+
+2
+-------------------
+
+**Variables and conditions**
+
+Variable types
+	Number
+	String
+	Boolean
+Comments & PSUEDOCODE
+Confirm()
+
+Class:
+	Logic examples
+	Variable types
+	Using a confirm box determine if the user hit ok or cancel by passing the argument to a function.
+	Browser detection
+
+Assignment: Choose your own adventure using Confirm()
+	4 decision points
+	Everything _must_ be commented
+	Everything _must_ be indented correctly
+	
+3
+-------------------
+
+**Functions**
+
+Concatentation
+Variable math
+Getting input with PROMPT()
+Arguments
+Returns
+Complex conditionals
+Variable Scope
+
+QUIZ: How to write a variable & what are the different types of variables.
+
+Class:
+	Hello world with argument
+	Simple math calculator
+
+Homework:
+	Create a tip calculator from these requirements:
+
+4
+--------------------
+
+**Review and Loops**
+
+Review functions, variables, logic, CSS, types
+
+For loop
+While loop
+Break
+
+class:
+	Show writing data out to the screen using a loop
+	Show breaking out of a loop based on a condition
+
+Homework:
+The infamous pyramid
+Factorial (using PROMPT() )
+	- Twist: will not do a factorial above 10
+
+5
+--------------------
+
+**Arrays**
+
+Arrays
+Splitting strings
+Looping through an array
+
+CLass:
+	Making arrays in code
+	How arrays are made from string.split
+	Searching an array
+
+Homework:
+Search an array for a value
+	- Input as a string
+	- Split on spaces
+	- Return if the string has the value or not
+Sum up an array's value
+
+
+
+6
+---------------------
+
+**DOM Manipulation**
+
+Objects...
+
+IDs
+Classes
+getElementByID
+getElementsByClassName
+innerHTML
+
+style property
+	Background color
+	Positioning
+	Width
+	Height
+
+Class:
+	Make an object, modify it, show the resulting object
+	Select divs on the page, change their colors, sizes, shapes. Boring stuff.
+	Insert divs into the DOM 
+
+Homework:
+	
+Sum up value (from last week)
+	- Put output into a div
+	- If the value is greater than 100, color the value red
+
+Given some markup, select specific elements and change their style to specific styles
+
+
+7
+-------------------------
+
+**Review week**
+
+Day 1:
+
+Normal review
+Extra credit question and answer
+
+Day 2:
+This will go over everything that has been learned.
+Possibly a Jeopardy game played in class.
+Or they will do a project together in class using the whiteboard only to write the code together.
+Or assign groups and have them all up on the whiteboard writing code 
+
+Homework/midterm project:
+	???
+
+8
+-------------------------
+
+**Midterm / Day off**
+
+9
+----------------------------
+
+**Events**
+
+inputs
+getValue
+
+getElementById
+addEventLister
+click event
+
+in class:
+	Count clicker
+	Assign height (input, change a div's height to that number)
+	Form validation
+
+homework:
+	rebuild tip calculator, with buttons
+	username and password
+
+10
+----------------------------
+
+**Events 2**
+
+javascript audio
+mouseOver
+mouseOut
+event.target
+
+in class:
+	Grow on over, disppaear on out
+
+homework:
+	click to explode
+	plink
+
+11
+----------------------------
+
+**Graphics**
+
+Canvas tag
+Review of canvas points
+Review of hex colors
+Drawing rectangles
+Drawing circles
+Drawing lines
+Strokes
+Fills
+
+Class:
+	
+
+Homework:
+	Creature?
+
+12
+-------------------------
+
+**Animation**
+
+Timers
+Animation position, scale, color
+
+Class:
+	Equations of motion
+
+Homework:
+	Rain
+
+13
+--------------------------
+
+**Data/IO**
+
+Local storage
+Validation
+JSON
+
+Class:
+	To do list
+
+Homework:
+	Form validation
+	Mark up album data in JSON format
+
+14
+-----------------------------
+
+**Debugging**
+
+Debugging strategies
+Finding where the error is
+Using commented code
+Using da debuger
+
+Weeklong:
+	Given broken code, fix it
+	**Chance to go back and fix old projects for E.C.**
+
+
+15
+------------------------------
+
+**Review**
+
+Normal review
+Extra credit question and answer
+This will go over everything that has been learned.
+Possibly a Jeopardy game played in class.
+Or they will do a project together in class using the whiteboard only to write the code together.
+Or assign groups and have them all up on the whiteboard writing code 
+
+Homework:
+	Tic tac toe
+
+16
+-----------------------------
+

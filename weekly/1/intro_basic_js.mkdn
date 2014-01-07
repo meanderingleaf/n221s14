@@ -1,0 +1,75 @@
+%n221 Intro
+
+n221 Intro
+------------------------
+
+Travis Faas
+Media Arts and Science, IUPUI
+
+What is a 'media application?'
+------------------------
+
+Interactive Media Development
+------------------------
+
+- Games, apps, websites, those wonderful DVD menus, etc
+
+The tools
+-------------------------
+
+- Javascript
+- Adobe Dreamweaver
+- Filezilla
+- Google Chrome
+
+Javascript
+------------------------
+
+- Our programming language of choice
+- The language of the web - and a lot of other things
+
+Places you will find javascript
+------------------------
+
+- Web browsers
+- Game engines
+- Apps
+- Backends of websites
+
+Things Javascript can do (in the browser)
+------------------------
+
+- Update the DOM
+- Speak to a backend server
+- Stream video/data
+- Draw to a canvas
+- Access the microphone/camera
+- Access device rotation/orientation
+- 3D
+- Joypads
+
+In other words
+------------------------
+
+- Javascript is a surprisingly robust language
+
+Dreamweaver
+------------------------
+
+- Our code editor of choice
+- Will check your javascript for errors
+- Provides code hints
+- When making a new file, always remember to choose the HTML5 doctype
+
+Filezilla
+------------------------
+
+- Our FTP (file transfer protocol) client of choice
+- We will be uploading all our work to a webserver
+
+Chrome
+------------------------
+
+- Our web browser of choice
+- [Download and install](https://www.google.com/intl/en/chrome/browser/)
+- No browser testing - assume it always runs in Chrome
