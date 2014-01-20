@@ -24,6 +24,9 @@ Assignment: Create a simple page
 
 	Entry Survey
 
+Reading:
+	Hour 1
+
 2
 -------------------
 
@@ -46,6 +49,10 @@ Assignment: Choose your own adventure using Confirm()
 	4 decision points
 	Everything _must_ be commented
 	Everything _must_ be indented correctly
+
+Reading:
+	Hour 2
+	Hour 6: Conditional statements
 	
 3
 -------------------
@@ -69,6 +76,9 @@ Class:
 Homework:
 	Create a tip calculator from these requirements:
 
+Reading:
+	Hour 3
+
 4
 --------------------
 
@@ -88,6 +98,9 @@ Homework:
 The infamous pyramid
 Factorial (using PROMPT() )
 	- Twist: will not do a factorial above 10
+
+Reading:
+	Hour 6
 
 5
 --------------------
@@ -109,7 +122,10 @@ Search an array for a value
 	- Split on spaces
 	- Return if the string has the value or not
 Sum up an array's value
+Codecademy 1/3
 
+Reading:
+	Hour 5
 
 
 6
@@ -143,7 +159,10 @@ Sum up value (from last week)
 	- If the value is greater than 100, color the value red
 
 Given some markup, select specific elements and change their style to specific styles
+Codecademy 2/3
 
+Reading:
+	Hour 4, 11, 12, 13
 
 7
 -------------------------
@@ -162,7 +181,7 @@ Or they will do a project together in class using the whiteboard only to write t
 Or assign groups and have them all up on the whiteboard writing code 
 
 Homework/midterm project:
-	???
+	Codecademy 3/3
 
 8
 -------------------------
@@ -189,6 +208,9 @@ in class:
 homework:
 	rebuild tip calculator, with buttons
 	username and password
+
+Reading:
+	Hour 9
 
 10
 ----------------------------
