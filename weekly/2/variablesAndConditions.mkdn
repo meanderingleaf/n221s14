@@ -77,14 +77,18 @@ Variable assignment
 
 - Note that variable assignment can take place *whenever*
 
-	var myVar;
-	myVar = 5;
+```
+var myVar;
+myVar = 5;
+```
 
 - And that the last time something is assigned to it represent the **current value**
 
-	var myVar;
-	myVar = 5;
-	myVar = 8;
+```
+var myVar;
+myVar = 5;
+myVar = 8;
+```
 
 - In the case above, myVar is 'worth' 8 by the end of the code
 
@@ -110,11 +114,13 @@ Block-comment
 - Ends with a star-slash
 - Anything in between is not interpereted as code by the computer
 
-	/*
-		This
-		is
-		a block comment
-	*/
+```
+/*
+	This
+	is
+	a block comment
+*/
+```
 
 Why use comments
 ----------------------------------------------
@@ -128,18 +134,22 @@ Using comments - a basic example
 - Let's say we need to make a program that creates a varaible worth five, then make it worth 7
 - Here would be the psuedocode
 
-	//Make a variable
-	//store 5 in the variable
-	//store 7 in the variable
+```
+//Make a variable
+//store 5 in the variable
+//store 7 in the variable
+```
 
 - Here would be the final code
 
-	//Make a variable
-	var myVariable;
-	//store 5 in the variable
-	myVariable = 5;
-	//store 7 in the variable
-	myVariable = 7;
+```
+//Make a variable
+var myVariable;
+//store 5 in the variable
+myVariable = 5;
+//store 7 in the variable
+myVariable = 7;
+```
 
 Logic
 ---------------------------------------------
@@ -156,26 +166,34 @@ Logic
 Less than
 ---------------------------------------------
 
-	var resultOne = 5 < 7; //true
-	var resultTwo = 7 < 5; //false
+```
+var resultOne = 5 < 7; //true
+var resultTwo = 7 < 5; //false
+```
 
 Greater than
 ----------------------------------------------
 
-	var resultOne = 5 > 7; //false
-	var resultTwo = 7 > 5; //true
+```
+var resultOne = 5 > 7; //false
+var resultTwo = 7 > 5; //true
+```
 
 Equal to
 -----------------------------------------------
 
-	var resultOne = 5 == 5; //true
-	var resultTwo = 7 == 5; //false
+```
+var resultOne = 5 == 5; //true
+var resultTwo = 7 == 5; //false
+```
 
 Not equal to
 -----------------------------------------------
 
-	var resultOne = 5 != 5; //false
-	var resultTwo = 7 != 5; //true
+```
+var resultOne = 5 != 5; //false
+var resultTwo = 7 != 5; //true
+```
 
 The if statement
 -----------------------------------------------
