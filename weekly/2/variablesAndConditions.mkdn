@@ -27,7 +27,7 @@ A variable
 Variable types
 ----------------------------------------
 
-- Three basic types of variable
+Three basic types of variable
 
 - String
 - Number
@@ -36,7 +36,7 @@ Variable types
 Numbers
 ----------------------------------------
 
-- Store numerical data
+Store numerical data
 
 - 5
 - -10
@@ -46,7 +46,7 @@ Numbers
 Strings
 ----------------------------------------
 
-- Store textual data
+Store textual data
 
 - "Hello world"
 - "This is a string"
@@ -185,24 +185,28 @@ The if statement
 - A block of code is anything inside of *curly brackets* { }
 
 - An example:
-	
-	if(true) 
-	{
-		//this code runs
-	}
+
+```
+if(true) 
+{
+	//this code runs
+}
+```
 
 Else
 -----------------------------------------------
 
 - The else statement only runs if the thing within the if statement is **false**
 
-	if(4<5) {
-		alert("All is right with the world.");
-	} 
-	else 
-	{
-		alert("Something has gone terribly wrong");
-	}
+```
+if(4<5) {
+	alert("All is right with the world.");
+} 
+else 
+{
+	alert("Something has gone terribly wrong");
+}
+```
 
 Confirm - Getting some data in
 -----------------------------------------------
@@ -220,19 +224,21 @@ Using confirms
 
 - Combine with conditionals
 
-	//get user's input if they want to read a book
-	var readAbook = confirm("Do you want to read a book?");
-	
-	if(readABook == true) 
-	{
-		//if the user wants to read a book
-		alert("Good.")
-	} 
-	else 
-	{
-		//if the user does not want to read a book
-		alert("Your mind will rot!")
-	}
+```
+//get user's input if they want to read a book
+var readAbook = confirm("Do you want to read a book?");
+
+if(readABook == true) 
+{
+	//if the user wants to read a book
+	alert("Good.")
+} 
+else 
+{
+	//if the user does not want to read a book
+	alert("Your mind will rot!")
+}
+```
 
 
 
@@ -240,25 +246,27 @@ Nesting conditionals
 ----------------------------------------------------
 
 - It is entirely possible to have if statements within if statements
-	
-	//get user's input if they want to read a book
-	var readAbook = confirm("Do you want to read a book?");
-	var doHomework = confirm("Do you also want to do you homework?")
-	
-	if(readABook == true) 
+
+```	
+//get user's input if they want to read a book
+var readAbook = confirm("Do you want to read a book?");
+var doHomework = confirm("Do you also want to do you homework?")
+
+if(readABook == true) 
+{
+	//if the user wants to read a book
+	if(doHomework==true) 
 	{
-		//if the user wants to read a book
-		if(doHomework==true) 
-		{
-			//if the user wants to do their homework
-			alert("Excellent!");
-		}
-	} 
-	else 
-	{
-		//if the user does not want to read a book
-		alert("Your mind will rot!")
+		//if the user wants to do their homework
+		alert("Excellent!");
 	}
+} 
+else 
+{
+	//if the user does not want to read a book
+	alert("Your mind will rot!")
+}
+```
 
 
 Quick question
@@ -290,20 +298,22 @@ false	&& false	: false
 Simplifying our previous if/else statement
 --------------------------------------------------------
 
-	//get user's input if they want to read a book
-	var readAbook = confirm("Do you want to read a book?");
-	var doHomework = confirm("Do you also want to do you homework?")
-	
-	if(readABook == true && doHomework == true) 
-	{
-		//if the user wants to read a book AND do their homework
-		alert("Excellent!");
-	} 
-	else 
-	{
-		//if the user does not want to read a book
-		alert("Your mind will rot!")
-	}
+```
+//get user's input if they want to read a book
+var readAbook = confirm("Do you want to read a book?");
+var doHomework = confirm("Do you also want to do you homework?")
+
+if(readABook == true && doHomework == true) 
+{
+	//if the user wants to read a book AND do their homework
+	alert("Excellent!");
+} 
+else 
+{
+	//if the user does not want to read a book
+	alert("Your mind will rot!")
+}
+```
 
 A brief note about fomatting
 ---------------------------------------------------------
