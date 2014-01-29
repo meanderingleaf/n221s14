@@ -1,0 +1,258 @@
+Operands
+------------------------------
+
+You can do more with variables than just assign single values.
+
+```
+var a = 4;
+var b = 2;
+
+//addition
+var c = a + b; //6
+
+//subtraction
+var d = a - b; // 2
+
+//multiplication
+var e = a * b; //8
+
+//division
+var f = a / b; //2
+
+//modulo
+var g = a % b; // 0
+```
+
+Modulo
+------------------------------
+
+Also Known As "remainder"
+The part left over after division
+
+```
+7 % 3 //1
+12 % 10 //2
+```
+
+Question
+------------------------------
+
+Let's say I have a variable `myVar` and I want to subtract 2 from it, and store that value back into the variable?
+
+How do I do that?
+
+Incrementing/Decrementing
+------------------------------
+
+```
+var a = 5;
+
+//incrementing
+a = a + 1; //a == 6
+
+//decrementing
+a = a - 3; //a == 3
+
+//multiplenting? (this and the next are not real words I just thought they were funny)
+a = a * 2; //6
+
+//divisiplexing?
+a = a / 3; //2
+```
+
+Incrementing/Decrementing/other shorthand
+-----------------------------
+
+```
+var a = 5;
+
+//incrementing
+a += 1; //a == 6
+
+//decrementing
+a -= 3; //a == 3
+
+//multiplenting? (this and the next are not real words I just thought they were funny)
+a *= 2; //6
+
+//divisiplexing?
+a /= 3; //2
+```
+
+Functions
+------------------------------
+
+Functions are a way to package up a block of code to run at a later time.
+They code inside their curly brackets is not used until they are **called**, **invoked**, **ran** (these are all terms I may or may not use in class)
+
+**Here is a function**
+
+```
+function sayHello() {
+	console.log("Hello");
+}
+```
+
+This function will, when used, output some text to our lovely developer console.
+
+**Here's how to run that function**
+
+```
+sayHello();
+```
+
+If you put it all together, it looks like this
+
+```
+
+function sayHello() {
+	console.log("Hello");
+}
+
+sayHello();
+
+```
+
+This is a good point to write your own, similar function, and call it
+------------------------------------------------------------------------
+
+Function arguments
+--------------------------------------
+
+- Functions are machines, and, like some machines, can take inputs (called **arguments**)
+- Arguments become variables inside of the functions
+
+**Argument Example**
+
+```
+function sayHelloName(name) {
+	//name is now a variable in this function
+	//we can do anything we want with it
+
+	//even something boring like say hello to the name
+	console.log("Hello " + name + "!");
+}
+```
+
+Calling a function with arguments
+-----------------------------------------
+
+- Provide the argument inside of the parenthesis
+
+**Using our sayHelloName function**
+
+```
+sayHelloName("Todd");
+```
+
+Multiple arguments
+-------------------------------------------
+
+- Functions can take multiple arguments
+- Put a comma between each argument
+
+```
+
+//the function
+function sayHelloSalutation(salutation, name) {
+	console.log(salutation + " " + name +"!")
+}
+
+//calling the function
+sayHelloSalutation("What's up", "Dan");
+
+```
+
+Now is a good time to make a similar function to the one above and call it
+--------------------------------------------
+
+Don't you think?
+
+
+Function returns
+-------------------------------------------
+
+Functions can also return values. Here's a simple example
+
+```
+function makeHello() {
+	var aString = "hello";
+	return aString;
+}
+
+
+//use the function
+var aHello = makeHello(); //a hello now contains 'hello'
+//this would do the same thing as above
+var aHello = "Hello";
+```
+
+Complex function usage
+---------------------------------------------
+
+```
+//our function
+function generateHello(salutation, name) {
+	var sal = salutation + " " + name +"!";
+	return sal;
+}
+
+//use the function
+
+var ourHello = generateHello("Hey there", "Dave");
+console.log(ourHello);
+```
+
+Scope
+----------------------------------------------
+
+Now that we have functions, we need to start worrying about **variable scope**
+
+**Variables created inside a function (with the var keyword) are not useable outside of that function**
+
+**But** variables created outside of that function are.
+
+```
+function myFunc() {
+	var awesomeVariable = "Pretty cool";
+}
+
+function myOtherFunction() {
+	console.log(awesomeVariable); //won't work
+}
+
+
+console.log(awesomeVariable); //won't work
+```
+
+```
+var awesomeVariable = "Pretty cool";
+
+function myFunc() {
+	console.log(awesomeVariable); //will work
+}
+
+function myOtherFunction() {
+	console.log(awesomeVariable); //will work
+}
+
+
+console.log(awesomeVariable); //will work
+```
+
+Prompt
+-------------------------------------
+
+**Yet another function that makes a popup**
+
+- This one lets us get textual / numerical input from the user
+
+```
+var userName = prompt("What's your name?");
+```
+
+- Now you can probably figure out that **prompt and confirm are both functions**
+	- And they both **return values**
+	- Confirm returns booleans
+	- Prompt returns strings/numbers
+
