@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>Playing with DOM manipulation</title>
+		<style>
+			#colorDiv {
+				width: 100px;
+				height: 100px;
+			}
+
+			.randomDiv {
+				width: 100px;
+				height:100px;
+
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="colorDiv"></div>
+		<div id="loopDiv"></div>
+
+		<script>
+			//get div references
+			var colorDivRef = document.getElementById('colorDiv');
+			var loopDivRef = document.getElementById('loopDiv');
+
+			//
+			/*
+			var desiredColor = prompt("What color would you like your div?");
+			console.log(desiredColor);
+
+			if(desiredColor == "red") {
+				colorDivRef.style.backgroundColor = "#FF0000";
+			} else if (desiredColor == "green") {
+				colorDivRef.style.backgroundColor = "#00FF00";
+			} else if (desiredColor == "blue") {
+				colorDivRef.style.backgroundColor = "#0000FF";
+			}
+			*/
+
+			//Loop div
+			for(var i = 0; i < 10; i++) {
+			//	loopDivRef.innerHTML += "<div class='randomDiv'></div>";
+				var elm = document.createElement("DIV")
+				elm.style.height = i * 10;
+				elm.style.width = i * 10;
+				elm.style.backgroundColor = randomColor();
+				elm.style.float = "left";
+				loopDivRef.appendChild(elm);
+			}
+
+			function randomColor() {
+				var randomRed = Math.floor(Math.random() * 255);
+				var randomGreen = Math.floor(Math.random() * 255);
+				var randomBlue = Math.floor(Math.random() * 255);
+				
+				//create the string that is the ‘random color’
+				var randomColor = "rgb("+randomRed+","+randomGreen+","+randomBlue+")";
+				
+				return randomColor;
+			}
+
+
+		</script>
+	</body>
+</html>
