@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Events Example</title>
+		<style>
+			.example {
+				width: 100px;
+				height: 100px;
+				background: #FF9999;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="example" onClick="onClick(event)"></div>
+		<script>
+			var exampleDivs = document.getElementsByClassName('example');
+			var firstDiv = exampleDivs[0];
+
+			firstDiv.addEventListener("mouseover", function(event) {
+				console.log(event);
+				event.target.style.backgroundColor = "#00FF00";
+			})
+
+			firstDiv.addEventListener("mouseout", function(event) {
+				console.log("Out");
+				event.target.style.backgroundColor = "#99FF99";
+			})
+
+			function onClick(event) {
+				console.log(event);
+			}
+		</script>
+	</body>
+</html>
