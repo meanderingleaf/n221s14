@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>Input Test</title>
+	</head>
+	<body>
+		<input id="myTextInput"></input>
+		<input id="myButton" type="button" value="Test me"></input>
+
+		<select id='mySelect'>
+			<option value="hamburger">Hamburger</option>
+			<option value="hotdog">Hotdog</option>
+		</select>
+
+		<div>
+			<form action="www.google.com" id="myForm">
+				<label>User name:</label><input id="userName"></input> <br />
+				<label>Zip</label><input id="zip"></input> <br />
+				<label>Email</label><input id="email"></input> <br />
+				<label>Phone</label><input id="phone"></input> <br />
+				<input type="submit" value="submit" />
+			</form>
+		</div>
+
+		<div>
+			<h2>Sound Test</h2>
+			<input type="button" id="soundBtn" value="Play that sound" />
+			<div id="soundStatus">
+				Not playing
+			</div>
+			<audio id="myAudio">
+			  <source src="assets/boop.wav" type="audio/wav">
+			</audio>
+		</div>
+
+		<script>
+
+			//get dat sound
+			var myAudio = document.getElementById('myAudio');
+			var soundStatus = document.getElementById('soundStatus');
+			myAudio.addEventListener('ended', function(event) {
+				soundStatus.innerHTML = "Not playing";
+			})
+
+			var soundBtn = document.getElementById('soundBtn');
+			soundBtn.addEventListener('click', function(event) {
+				myAudio.play();
+				soundStatus.innerHTML = "Playing";
+			})
+
+			//normal input stuff
+			var myTextInput = document.getElementById('myTextInput');
+			var myButton = document.getElementById('myButton');
+			var mySelect = document.getElementById('mySelect');
+
+			myButton.addEventListener('click', function(event) {
+				console.log(myTextInput.value);
+				console.log(mySelect.value);
+			})
+
+			//form stuff
+			var myForm = document.getElementById('myForm');
+			var userName = document.getElementById('userName');
+			var zip = document.getElementById('zip');
+			var email = document.getElementById('email');
+			var phone = document.getElementById('phone');
+
+			myForm.addEventListener('submit', function(event) {
+				
+				var formIsValid = true;
+
+				//check name
+				if( !isNaN(userName.value) ) {
+					formIsValid = false;
+				}
+
+
+				//check zip
+				if( isNaN(zip.value) || zip.value.length != 5) {
+					formIsValid = false;
+				}
+
+				//check email
+
+				//check phone
+
+				if(!formIsValid) {
+					event.preventDefault();
+			    	return false;
+				}
+			})
+		</script>
+	</body>
+</html>
