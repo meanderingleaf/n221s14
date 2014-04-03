@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>Canvaaaas</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="800" height="600"></canvas>
+
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx;
+
+			if (canvas.getContext) {
+				ctx = canvas.getContext('2d');
+			}
+
+			
+
+			canvas.addEventListener('mousemove', function(event) {
+				console.log(event);
+				ctx.fillRect(event.x,event.y,100,100);
+			})
+		</script
+	</body>
+</html>
