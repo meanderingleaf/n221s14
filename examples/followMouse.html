@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<title>Follow Moose</title>
+		<style>
+			body {
+				margin: 0; padding: 0;
+				background: #999;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="400" height="300">
+		<script>
+			//canvas stuff
+			var myCanvas = document.getElementById('myCanvas');
+			var ctx = myCanvas.getContext('2d');
+
+			var mousePosition = { x: 0, y: 0 };
+			var boxInfo = {
+					x: 0,
+					y: 0,
+					size: 10,
+					velocity: {
+						x: 1,
+						y: 1
+					}
+				};
+
+
+			//so we know the mouse position
+			//and yes
+			//this only works in chrome
+			myCanvas.addEventListener('mousemove', function(event) {
+				mousePosition.x = event.pageX;
+				mousePosition.y = event.pageY;
+			})
+
+			//
+			setInterval(function() {
+				ctx.clearRect(0,0,400,300);
+
+				//get difference between mouse position and square position
+				var diffX = mousePosition.x - boxInfo.x;
+				var diffY = mousePosition.y - boxInfo.y;
+
+				//move 10% closer
+				boxInfo.x += diffX * .1;
+				boxInfo.y += diffY * .1;
+
+				//draw
+				ctx.fillRect(boxInfo.x, boxInfo.y, boxInfo.size, boxInfo.size);
+			}, 30)
+
+
+		</script>
+	</body>
+</html>

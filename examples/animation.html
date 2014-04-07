@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Its animation</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="400" height="300">
+			<script>
+				
+				//canvas stuff
+				var myCanvas = document.getElementById('myCanvas');
+				var ctx = myCanvas.getContext('2d');
+
+				//animation variable
+				var boxinfo = {
+					x: 0,
+					y: 0,
+					size: 10,
+					velocity: {
+						x: 1,
+						y: 1
+					}
+				}
+
+				//boxes array
+				var boxes = [];
+
+				//create ten boxes
+				for(var i = 0; i < 10; i++) {
+					//they will be at a random x and y so we.. don't see 10 boxes on top of each other
+					boxes[i] = {
+						x: Math.random() * 400,
+						y: Math.random() * 300,
+						size: 10,
+						velocity: {
+							x: 1,
+							y: 1
+						}
+					}
+				}
+
+				//interval
+				setInterval(function() {
+					ctx.clearRect(0,0,400,300);
+
+					for(var i =0; i < boxes.length; i++) {
+
+						//get out current box
+						//so we don't have to change any of our other code, we will store it in a variable called 'box info'
+						boxinfo = boxes[i];
+
+						ctx.fillRect(boxinfo.x, boxinfo.y, boxinfo.size, boxinfo.size);
+
+						//check top
+						if(boxinfo.y < 0) {
+							boxinfo.y = 0;
+							boxinfo.velocity.y *= -1;
+						}
+
+						//check left
+						if(boxinfo.x < 0) {
+							boxinfo.x = 0;
+							boxinfo.velocity.x *= -1;
+						}
+
+						//check bottom
+						if((boxinfo.y + boxinfo.size) > 300) {
+							boxinfo.y = 300 - boxinfo.size;
+							boxinfo.velocity.y *= -1;
+						}
+
+						//check right
+						if((boxinfo.x + boxinfo.size) > 400) {
+							boxinfo.x = 400 - boxinfo.size;
+							boxinfo.velocity.x *= -1;
+						}
+
+
+						boxinfo.x += boxinfo.velocity.x;
+						boxinfo.y += boxinfo.velocity.y;
+					} //endfor
+				}, 30)
+			</script>
+	</body>
+</html>

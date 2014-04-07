@@ -1,0 +1,426 @@
+Animation
+-------------------------
+
+Is awesome.
+
+We're going to animate using the canvas tag.
+
+Timers
+-------------------------
+
+Before we can get into animation, we need to learn how to run our code mutiple times a second. In javascript, we acheive this with **setInterval**
+
+
+setInterval
+--------------------------
+
+The basics:
+
+```
+setInterval(functionToRun, delayInMiliseconds)
+```
+
+So
+
+``
+setInterval(function() {
+	console.log("Hey you peeps");
+}, 30)
+``
+
+Will log out the phrase 'Hey you peeps' every 30 milliseconds, or about 30 times a second
+
+
+Another example, using a variable outside of the function's scope:
+
+```
+var stepper = 0;
+
+setInterval(function() {
+	console.log(stepper);
+	stepper ++;
+}, 30)
+```
+
+This one will show a number going up by one every frame. And hey! Changing numbers over time are the basics of animation in code.
+
+
+Animation
+---------------------------
+
+
+Here's an example, using the canvas, of a basic animation of a black rectangle moving down and right across the screen
+
+```
+<canvas id="myCanvas" width="400" height="300">
+			<script>
+				
+				//canvas stuff
+				var myCanvas = document.getElementById('myCanvas');
+				var ctx = myCanvas.getContext('2d');
+
+				//animation variable
+				var positionX = 0;
+				var positionY = 0;
+
+				//interval
+				//
+				setInterval(function() {
+					ctx.clearRect(0,0,400,300);
+					ctx.fillRect(positionX, positionY, 20, 20);
+					positionX ++;
+					positionY ++;
+				}, 30)
+			</script>
+```
+
+Objects
+--------------------------------
+
+
+Oh boy. We finally reached a point where objects kinda make sense. Let's take a look. In our previous example we had two varaibles:
+
+```
+var positionX = 0;
+var positionY = 0;
+```
+
+Both of these varaibles really look like they're related, though. They both have the name 'position' in front of them. Really, it would make more sense to make an **object** that stored position information, so we could *never lose track of related position information*.
+
+
+```
+var position = {
+	x: 0,
+	y: 0
+}
+```
+
+Using this object, we can access the positions using the dot and work with them *just like they were variables*.
+
+```
+//add one to the x position
+position.x ++;
+//set the y position to 10
+position.y
+```
+
+Using our new, fancy object variable:
+
+```
+<canvas id="myCanvas" width="400" height="300">
+<script>
+	
+	//canvas stuff
+	var myCanvas = document.getElementById('myCanvas');
+	var ctx = myCanvas.getContext('2d');
+
+	//animation variable
+	var position = {
+		x: 0,
+		y: 0
+	}
+
+	//interval
+	//
+	setInterval(function() {
+		ctx.clearRect(0,0,400,300);
+		ctx.fillRect(position.x, position.y, 20, 20);
+		position.x ++;
+		position.y ++;
+	}, 30)
+</script>
+```
+
+Abstracting all of our box properties
+-----------------------
+
+Let's make things a bit more complex. We're going to edit our position object so it contains some more information about our box: the direction its moving in, and it size.
+
+```
+var boxinfo = {
+	x: 0,
+	y: 0,
+	size: 20,
+	velocity: 1
+}
+```
+
+Great. Now we can rewrite our code to look like this:
+
+
+```
+<canvas id="myCanvas" width="400" height="300">
+<script>
+	
+	//canvas stuff
+	var myCanvas = document.getElementById('myCanvas');
+	var ctx = myCanvas.getContext('2d');
+
+	//animation variable
+	var boxinfo = {
+		x: 0,
+		y: 0,
+		size: 10,
+		velocity: 1
+	}
+
+	//interval
+	//
+	setInterval(function() {
+		ctx.clearRect(0,0,400,300);
+		ctx.fillRect(boxinfo.x, boxinfo.y, boxinfo.size, boxinfo.size);
+		boxinfo.x += boxinfo.velocity;
+		boxinfo.y += boxinfo.velocity;
+	}, 30)
+</script>
+```
+
+Bouncing our box
+-------------------------------------
+
+
+(AKA 'if statements are useful')
+
+So, we know the width and height of our box, and the width and hight of our canvas.
+That means we can make a screensaver with a wonderful, bouncing box by checking if the box is hitting a corner, and, if it is, making it move in the opposite direction.
+
+(Assuming the code from the last example:)
+
+```
+setInterval(function() {
+	ctx.clearRect(0,0,400,300);
+	ctx.fillRect(boxinfo.x, boxinfo.y, boxinfo.size, boxinfo.size);
+
+	//check top
+	if(boxinfo.y < 0) {
+		boxinfo.y = 0;
+		boxinfo.velocity *= -1;
+	}
+
+	//check left
+	if(boxinfo.x < 0) {
+		boxinfo.x = 0;
+		boxinfo.velocity *= -1;
+	}
+
+	//check bottom
+	if((boxinfo.y + boxinfo.size) > 300) {
+		boxinfo.y = 300 - boxinfo.size;
+		boxinfo.velocity *= -1;
+	}
+
+	//check right
+	if((boxinfo.x + boxinfo.size) > 400) {
+		boxinfo.x = 400 - boxinfo.size;
+		boxinfo.velocity *= -1;
+	}
+
+
+	boxinfo.x += boxinfo.velocity;
+	boxinfo.y += boxinfo.velocity;
+}, 30)
+```
+
+Oh dear, our box doesn't bounce... quite the way we wanted. That means its time for More Complexity.
+
+
+Objects in objects
+------------------------------
+
+To get a 'more realistic' bounce, we need to store our x and y velocities seperately. We're going to add another object inside of our first to do this.
+
+```
+var boxinfo = {
+	x: 0,
+	y: 0,
+	size: 10,
+	velocity: {
+		x: 1,
+		y: 1
+	}
+}
+```
+
+
+Using this object, we can now access the velocities like so:
+
+```
+boxinfo.velocity.x; //x velocity
+boxinfo.velocity.y; //y velocity
+```
+
+We can now update our animation function to apply the correct x and y velocities on update, and change only the appropriate velocity when a wall is hit.
+
+```
+
+var boxinfo = {
+	x: 0,
+	y: 0,
+	size: 10,
+	velocity: {
+		x: 1,
+		y: 1
+	}
+}
+
+setInterval(function() {
+	ctx.clearRect(0,0,400,300);
+	ctx.fillRect(boxinfo.x, boxinfo.y, boxinfo.size, boxinfo.size);
+
+	//check top
+	if(boxinfo.y < 0) {
+		boxinfo.y = 0;
+		boxinfo.velocity.y *= -1;
+	}
+
+	//check left
+	if(boxinfo.x < 0) {
+		boxinfo.x = 0;
+		boxinfo.velocity.x *= -1;
+	}
+
+	//check bottom
+	if((boxinfo.y + boxinfo.size) > 300) {
+		boxinfo.y = 300 - boxinfo.size;
+		boxinfo.velocity.y *= -1;
+	}
+
+	//check right
+	if((boxinfo.x + boxinfo.size) > 400) {
+		boxinfo.x = 400 - boxinfo.size;
+		boxinfo.velocity.x *= -1;
+	}
+
+
+	boxinfo.x += boxinfo.velocity.x;
+	boxinfo.y += boxinfo.velocity.y;
+}, 30)
+```
+
+
+Lots and lots
+------------------------------------
+
+(aka: go, arrays, go)
+
+So, we have this wonderful object that stores information about a box we're animating. What if we want a lot of boxes?
+
+**Easy enough**
+
+Make an array of objects, and look through them, drawing them to the canvas:
+
+
+```
+
+//boxes array
+var boxes = [];
+
+//create ten boxes
+for(var i = 0; i < 10; i++) {
+	//they will be at a random x and y so we.. don't see 10 boxes on top of each other
+	boxes[i] = {
+		x: Math.random() * 400,
+		y: Math.random() * 300,
+		size: 10,
+		velocity: {
+			x: 1,
+			y: 1
+		}
+	}
+}
+
+```
+
+And, to animate them, we loop though that array and run the **same code with some minor modifications**
+
+```
+setInterval(function() {
+	ctx.clearRect(0,0,400,300);
+
+	for(var i =0; i < boxes.length; i++) {
+
+		//get out current box
+		//so we don't have to change any of our other code, we will store it in a variable called 'box info'
+		boxinfo = boxes[i];
+
+		ctx.fillRect(boxinfo.x, boxinfo.y, boxinfo.size, boxinfo.size);
+
+		//check top
+		if(boxinfo.y < 0) {
+			boxinfo.y = 0;
+			boxinfo.velocity.y *= -1;
+		}
+
+		//check left
+		if(boxinfo.x < 0) {
+			boxinfo.x = 0;
+			boxinfo.velocity.x *= -1;
+		}
+
+		//check bottom
+		if((boxinfo.y + boxinfo.size) > 300) {
+			boxinfo.y = 300 - boxinfo.size;
+			boxinfo.velocity.y *= -1;
+		}
+
+		//check right
+		if((boxinfo.x + boxinfo.size) > 400) {
+			boxinfo.x = 400 - boxinfo.size;
+			boxinfo.velocity.x *= -1;
+		}
+
+
+		boxinfo.x += boxinfo.velocity.x;
+		boxinfo.y += boxinfo.velocity.y;
+	} //endfor
+}, 30)
+```
+
+
+Following the mouse
+----------------------------------------
+
+Another good way to think about moving items is not on a **fixed velocity** but on a **percentage of a distance**. Here's a fun example: following the mouse in fluid way.
+
+
+```
+//canvas stuff
+var myCanvas = document.getElementById('myCanvas');
+var ctx = myCanvas.getContext('2d');
+
+var mousePosition = { x: 0, y: 0 };
+var boxInfo = {
+		x: 0,
+		y: 0,
+		size: 10,
+		velocity: {
+			x: 1,
+			y: 1
+		}
+	};
+
+
+//so we know the mouse position
+//and yes
+//this only works in chrome
+myCanvas.addEventListener('mousemove', function(event) {
+	mousePosition.x = event.pageX;
+	mousePosition.y = event.pageY;
+})
+
+//
+setInterval(function() {
+	ctx.clearRect(0,0,400,300);
+
+	//get difference between mouse position and square position
+	var diffX = mousePosition.x - boxInfo.x;
+	var diffY = mousePosition.y - boxInfo.y;
+
+	//move 10% closer
+	boxInfo.x += diffX * .1;
+	boxInfo.y += diffY * .1;
+
+	//draw
+	ctx.fillRect(boxInfo.x, boxInfo.y, boxInfo.size, boxInfo.size);
+}, 30)
+```
