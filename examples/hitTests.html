@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>Hiiiit tests</title>
+		<style>
+			* { margin: 0; padding: 0; }
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="800" height="600"></canvas>
+
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx;
+
+			if (canvas.getContext) {
+				ctx = canvas.getContext('2d');
+			}
+
+			function Box() {
+				this.x = 130;
+				this.y = 130;
+				this.size = 100;
+				this.velocity = {
+					x: 1,
+					y: 1
+				};
+
+				this.hitTest = function(otherBox) {
+					if( (this.x + this.size) < otherBox.x ) {
+						return false;
+					}
+
+					if( (this.y + this.size) < otherBox.y ) {
+						return false;
+					}
+
+					if(this.x > (otherBox.x + otherBox.size)) {
+						return false;
+					}
+
+					if(this.y > (otherBox.y + otherBox.size)) {
+						return false;
+					}
+
+					return true;
+				}
+
+				this.hitTestPoint = function(pointX,pointY) {
+					//collision detection point
+					if( pointX > box.x && pointX < box.x +box.size ) {
+						if(pointY > box.y && pointY < box.y + box.size ) {
+							console.log("Total collision!")
+						}
+					}
+				}
+			}
+
+			//out wonderful new boxes
+			var box = new Box();
+			var boxTwo = new Box();
+				boxTwo.x = 0;
+				boxTwo.y = 0;
+			canvas.addEventListener('click', function(event) {
+				//Let's see if the user clicked within the space of the cube
+				console.log(event.pageX)
+				box.hitTestPoint(event.pageX, event.pageY);
+				
+			})
+
+			setInterval(function() {
+				ctx.clearRect(0,0,800,600);
+				ctx.fillRect(box.x, box.y, box.size, box.size);
+				ctx.fillRect(boxTwo.x, boxTwo.y, boxTwo.size, boxTwo.size);
+
+				boxTwo.x += boxTwo.velocity.x;
+				boxTwo.y += boxTwo.velocity.y;
+
+				console.log( boxTwo.hitTest(box) );
+			}, 30);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,176 @@
+Hit tests
+==========================
+
+Hit tests are built into everything we do in our wonderful, graphical computing world. In order to tell exactly _what_ is being clicked, we need to do a hit test when a mouse button is pressed to see what objects it is over, and if they are listening for any clicks at that time. This, of course, is usually handled behind the scenes for us, but when we're working on the canvas we don't have that luxury.
+
+
+**An aside - our box**
+
+Just so we're on the same page, we'll be working with this box object for our hit tests:
+
+```
+var box = {
+	x: 0,
+	y: 0,
+	size: 100,
+	velocity: {
+		x: 0,
+		y: 0
+	}
+}
+```
+
+Checking to see if a point is within a box
+-------------------------------
+
+This is a fairly easy hit test to think about: if a point's x is greater than a box's x, but not so much that its outside of the point that is (box.x+box.width), then we know the point is within the box horizontally. We can swap those x's and width's for y's and height's and get the same thing for vertically. If we combine the two, we know, _for certain_ if a point is within or outside of a box:
+
+![Hit test point](img/hitTestPoint.png)
+
+Here is a sample hit test function, added to our box object:
+
+```
+var box = {
+	x: 0,
+	y: 0,
+	size: 100,
+	velocity: {
+		x: 0,
+		y: 0
+	},
+	hitTestPoint: function(px,py) {
+		if(px > this.x && px < (this.x+this.size)) {
+			if(py > this.y && py < (this.y+this.size)) {
+				return true; //hit!
+			}
+		}
+
+		return false; //no hit!
+	}
+}
+```
+
+We, of course, can then use this function just like any other **method** we've seen come after a dot:
+
+```
+box.hitTestPoint(330, 20);//will return true if that point is within the box
+```
+
+Checking to see if a box is htting another box
+----------------------------------
+
+Aka "axes aligned bounding boxes" (because our boxes will never rotate, that stay 'aligned to our two axes(x,y)')
+
+This gets a bit more complex.
+
+Instead of checking to see if the box is colliding with another box, we're going to make the assumption that the *box already is*. Then we check four specific cases that happen to cover all the times when the box would not be colliding:
+
+1. If the first box is too far to the left of the second box
+2. If the first box is too far to the right of the second box
+3. If the first box is too far above the second box
+4. If the first box is too far below the second box
+
+![Bounding Boxes](img/AABB.png)
+
+Here is our code, added to our box:
+
+```
+var box = {
+	x: 0,
+	y: 0,
+	size: 100,
+	velocity: {
+		x: 0,
+		y: 0
+	},
+	hitTestPoint: function(px,py) {
+		if(px > this.x && px < (this.x+this.size)) {
+			if(py > this.y && py < (this.y+this.size)) {
+				return true; //hit!
+			}
+		}
+
+		return false; //no hit!
+	},
+	hitTest: (otherBox) {
+		if( (this.x + this.size) < otherBox.x ) {
+			return false;
+		}
+
+		if( (this.y + this.size) < otherBox.y ) {
+			return false;
+		}
+
+		if(this.x > (otherBox.x + otherBox.size)) {
+			return false;
+		}
+
+		if(this.y > (otherBox.y + otherBox.size)) {
+			return false;
+		}
+
+		return true;
+	}
+}
+```
+
+Making multiples of the same object
+---------------------------------
+
+Before, if we wanted to have _two_ boxes, we would have to write all that code over again (or at least copy+paste). That's a waste of time. Instead, it would make more sense to turn our object into something that we can make copies of using the **new** operator. This syntax looks a bit funky, bit will be very useful:
+
+**Making a box class**
+
+```
+function Box() {
+	this.x = 130;
+	this.y = 130;
+	this.size = 100;
+	this.velocity = {
+		x: 1,
+		y: 1
+	};
+
+	this.hitTest = function(otherBox) {
+		if( (this.x + this.size) < otherBox.x ) {
+			return false;
+		}
+
+		if( (this.y + this.size) < otherBox.y ) {
+			return false;
+		}
+
+		if(this.x > (otherBox.x + otherBox.size)) {
+			return false;
+		}
+
+		if(this.y > (otherBox.y + otherBox.size)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	this.hitTestPoint = function(pointX,pointY) {
+		//collision detection point
+		if( pointX > box.x && pointX < box.x +box.size ) {
+			if(pointY > box.y && pointY < box.y + box.size ) {
+				console.log("Total collision!")
+			}
+		}
+	}
+}
+```
+
+Instead of using the object notation, we put all the objects properties into a *function*, and can assign the function properties using *this* inside the function.
+
+Using our new box 'class'.
+
+```
+var box1 = new Box();
+var box2 = new Box();
+
+//Both of these boxes have all the same properties and methods of our original box...
+console.log(box1.size);
+console.log(box2.hitTestPoint(30,30));
+```

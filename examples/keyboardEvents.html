@@ -1,0 +1,89 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<canvas id="myCanvas" width="300" height="400"></canvas>
+		<script>
+
+			var canvas = document.getElementById("myCanvas");
+			var ctx;
+
+			var rightKeyDown = false;
+			var leftKeyDown = false;
+
+			if (canvas.getContext) {
+				ctx = canvas.getContext('2d');
+			}
+
+			var boxinfo = {
+					x: 0,
+					y: 0,
+					size: 10,
+					velocity: {
+						x: 1,
+						y: 0
+					},
+					acceleration: {
+						x: 0,
+						y: 1
+					}
+				}
+
+			document.addEventListener("keydown", function(event) {
+				
+				if(event.keyCode == 39) {
+					rightKeyDown = true;
+				}
+
+				if(event.keyCode == 37) {
+					leftKeyDown = true;
+				}
+
+				if(event.keyCode == 38) {
+					boxinfo.velocity.y = -10;
+				}
+			})
+
+			document.addEventListener("keyup", function(event) {
+				if(event.keyCode == 39) {
+					rightKeyDown = false;
+				}
+
+				if(event.keyCode == 37) {
+					leftKeyDown = false;
+				}
+
+			})
+
+			setInterval(function() {
+					ctx.clearRect(0,0,400,300);
+					ctx.fillRect(boxinfo.x, boxinfo.y, boxinfo.size, boxinfo.size);
+
+					
+					boxinfo.acceleration.x = 0;
+
+					if(rightKeyDown) {
+						boxinfo.acceleration.x = 1;
+					}
+
+					if(leftKeyDown) {
+						boxinfo.acceleration.x = -1;
+					}
+
+					boxinfo.velocity.x += boxinfo.acceleration.x;
+					boxinfo.velocity.y += boxinfo.acceleration.y;
+
+					boxinfo.x += boxinfo.velocity.x;
+					boxinfo.y += boxinfo.velocity.y;
+
+					boxinfo.velocity.x *= .9;
+
+					if(boxinfo.y + boxinfo.size > 300) {
+						boxinfo.y = 300 - boxinfo.size;
+					}
+					
+			}, 30);
+		</script>
+	</body>
+</html>

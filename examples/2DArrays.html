@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>2D Arrays</title>
+		<style>
+			.cell {
+				width: 30px;
+				height: 30px;
+				background-color: #999999;
+				float: left;
+				margin: 1px;
+				text-align: center;
+			}
+
+			.row {
+				height: 32px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="output"></div>
+		
+		<div>
+			<div class="row">
+				<span onClick="changeCell(0,0,event)" class="cell"></span>
+				<span onClick="changeCell(1,0,event)" class="cell"></span>
+				<span onClick="changeCell(2,0,event)" class="cell"></span>
+			</div>
+			<div class="row">
+				<span onClick="changeCell(0,1,event)" class="cell"></span>
+				<span onClick="changeCell(1,1,event)" class="cell"></span>
+				<span onClick="changeCell(2,1,event)" class="cell"></span>
+			</div>
+			<div class="row">
+				<span onClick="changeCell(0,2,event)" class="cell"></span>
+				<span onClick="changeCell(1,2,event)" class="cell"></span>
+				<span onClick="changeCell(2,2,event)" class="cell"></span>
+			</div>
+		</div>
+
+		<script>
+
+			var outputDiv = document.getElementById('output');
+
+			var grid = [
+				[ " ", " ", " "],
+				[ " ", " ", " "],
+				[ " ", " ", " "]
+			];
+
+			function changeCell(x,y,event) {
+				console.log(x,y,event);
+				event.target.innerHTML = "x";
+				grid[y][x] = "x";
+			}
+
+		</script>
+	</body>
+</html>

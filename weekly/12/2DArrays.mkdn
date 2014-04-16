@@ -1,0 +1,54 @@
+Two dimensional arrays
+============================
+
+I get it. Arrays are already tough enough. And here I am, aiming to make them even more confusing by adding a second dimension. Still, here we go.
+
+Yes.
+
+We can make arrays of arrays.
+
+Why?
+
+Why not.
+
+Well, actually, they have some nice properties.
+
+Like, right now, if you're staring at a computer screen (or other digital device screen), you are looking at at *2d array of pixels*. Other things that could be 2D arrays: chess boards, position grids, or even multi-level todo-lists.
+
+Making a 2D array
+-------------------------------
+
+Is dead simple: just make an array of arrays.
+
+```
+var grid = [
+	[ 1,2,3 ],
+	[ 4,5,6 ],
+	[ 7,8,9 ]
+]
+```
+
+Accessing elements inside of an array
+-------------------------------
+
+Use two square brackets:
+
+```
+grid[0][0] == 1;
+grid[2][0] == 7;
+grid[1][2] == 6;
+```
+
+Looping through all the elements in a 2D array
+-------------------------------------------------
+
+You need two for loops.
+
+
+```
+for(var y = 0; y < grid.length; y++) {
+	for(var x = 0; x < grid[0].length; x++) {
+		console.log(grid[y][x]);
+	}
+}
+```
