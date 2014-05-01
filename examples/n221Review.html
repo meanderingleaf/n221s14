@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<title>n221 Review</title>
+	</head>
+	<body>
+
+		<canvas id="myCanvas" width="400" height="300"></canvas>
+
+		<div id="score"></div>
+		<!-- I am so sorry for these terrible variable names. ITS NOT MY FAULT. T.F. -->
+		<div id="pielad"></div>
+		<div>
+			<p class="inf">Hello</p>
+			<p class="inf">World</p>
+			<p class="inf">Or</p>
+			<p class="inf">Worlds</p>
+		</div>
+
+		<div id="animationDiv"></div>
+
+		<script>
+
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+
+			var box = {
+				size: 30,
+				x: 100, y: 100,
+				velocity: {
+					x: (Math.random() * 5) - 2.5,
+					y: (Math.random() * 5) - 2.5
+				}
+			}
+
+			if(box.velocity.x < 0) {
+				box.velocity.x = -5;
+			} else {
+				box.velocity.x = 5;
+			}
+
+			if(box.velocity.y < 0) {
+				box.velocity.y = -5;
+			} else {
+				box.velocity.y = 5;
+			}
+
+			setInterval(function() {
+				ctx.clearRect(0,0,400,300);
+				ctx.fillRect(box.x, box.y, box.size, box.size);
+
+				//box.x += box.velocity.x;
+				box.y += box.velocity.y;
+
+				//decel / friction
+				//box.velocity.x *= .9;
+				//box.velocity.y *= .9;
+
+				//
+				box.velocity.y += .2;
+			}, 30);
+
+			var pieman = 0;
+			var scoreDiv = document.getElementById("score");
+			var pieladDiv = document.getElementById("pielad");
+			scoreDiv.innerHTML = "0";
+
+			scoreDiv.addEventListener("click", function(event) {
+				
+				pieman = pieman + 1; //pieman ++;
+				scoreDiv.innerHTML = pieman;
+
+				if(pieman < 10) { 
+					pieladDiv.innerHTML = "Not good enough.";
+				} else if(pieman < 20 ) {
+					pieladDiv.innerHTML = "That's fine I guess.";
+				} else if (pieman < 30) {
+					pieladDiv.innerHTML = "Getting better";
+				} else {
+					pieladDiv.innerHTML = "Hooray!";
+				}
+			})
+
+			var infoElements = document.getElementsByClassName('inf');
+
+			console.log(infoElements);
+
+			for(var i = 0; i < infoElements.length; i++) {
+				infoElements[i].style.color = "#FF0000";
+			}
+
+			//get reference to animation div
+			var animationDiv = document.getElementById('animationDiv');
+			animationDiv.style.width = "200px";
+			animationDiv.style.height = "200px";
+			animationDiv.style.backgroundColor = "#000000";
+
+			//makes a new div
+			var newDiv = document.createElement("DIV");
+			newDiv.style.width = "50px";
+			newDiv.style.height = "50px";
+			newDiv.style.backgroundColor = "#FF0000";
+			//We can't see the div, yet.
+			//To see the div, we need to add it to the DOM
+			//we can do this via "append child"
+			animationDiv.appendChild(newDiv);
+
+			var size = 200;
+
+/*
+			setInterval(function() {
+				animationDiv.style.height = size + "px";
+				animationDiv.style.width = size + "px";
+				size--;
+			}, 30);
+
+*/
+
+		</script>
+
+	</body>
+</html>
